@@ -1,0 +1,7 @@
+a = int(input())
+b = list(input())
+c1 = a*int(b[2])
+c2 = a*int(b[1])
+c3 = a*int(b[0])
+t = a*int(b[0]+b[1]+b[2])
+print(c1, c2, c3, t, sep = "\n")
