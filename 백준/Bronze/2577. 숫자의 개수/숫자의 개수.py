@@ -1,8 +1,8 @@
 A = int(input())
 B = int(input())
 C = int(input())
-r = A*B*C
-anw = list(str(r))
+
+anw = list(str(A*B*C))
 
 for i in range(0, 10):
     cnt = 0 
