@@ -1,19 +1,15 @@
-import sys
-import math
+N = int(input())
 
-input = sys.stdin.readline
+size = list(map(int, input().split()))
+T, P = map(int, input().split())
+group_T = 0
+group_P = []
+for i in range(0, 6):
+    group_T += size[i] // T
+    if size[i] % T != 0:
+        group_T += 1
 
-n = int(input())
+ans2 = [int(N/P), N%P]
 
-sizes = map(int, input().split())
-
-t, p = map(int, input().split())
-
-shirts_set_count = 0
-
-for size in sizes:
-    if size > 0:
-        shirts_set_count += math.ceil(size / t)
-
-print(shirts_set_count)
-print(n // p, n % p)
+print(group_T)
+print(*ans2)
