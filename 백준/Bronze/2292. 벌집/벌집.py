@@ -1,8 +1,11 @@
 N = int(input())
-Max_N = 1
-cnt = 1
-while N > Max_N:
-    Max_N += 6*cnt
-    cnt += 1
 
-print(cnt)
+if N == 1:
+    print(1)
+else:
+    NN = N - 1 
+    room = 1 
+    while NN > 0:
+        NN -= 6 * room
+        room += 1
+    print(room)
