@@ -1,13 +1,10 @@
 import sys
-Input = sys.stdin.readline
+input = sys.stdin.readline
 
-N = int(Input())
-ans = [0]*N
-
-for i in range(0, N):
-    ans[i] = int(Input())
+N = int(input())
+ans = [int(input()) for _ in range(N)]
 
 ans.sort()
 
-for j in range(0, N):
-    print(ans[j])
+for num in ans:
+    print(num)
