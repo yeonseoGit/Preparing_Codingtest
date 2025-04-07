@@ -1,24 +1,20 @@
 import sys
-sys.setrecursionlimit(10**6)
-input = sys.stdin.readline
 
-n = int(input())     # 컴퓨터 수
-m = int(input())     # 연결 수
+Input = sys.stdin.readline
 
-graph = [[] for _ in range(n)]
+N = int(Input())
+cup = int(Input())
+virus = [[] for _ in range(N)]
+for _ in range(cup):
+    a, b =  map(int, Input().split())
+    virus[a-1].append(b-1)
+    virus[b-1].append(a-1)
 
-for _ in range(m):
-    a, b = map(int, input().split())
-    graph[a - 1].append(b - 1)
-    graph[b - 1].append(a - 1)
-
-visited = [False] * n
-
-def dfs(v):
-    visited[v] = True
-    for next in graph[v]:
-        if not visited[next]:
+visit = [False for _ in range(N)]
+def dfs(x):
+    visit[x] = True
+    for next in virus[x]:
+        if not visit[next]:
             dfs(next)
-
-dfs(0)
-print(visited.count(True) - 1)
+dfs(0)  
+print(visit.count(True) - 1)  
