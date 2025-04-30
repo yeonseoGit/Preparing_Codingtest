@@ -3,18 +3,24 @@ input = sys.stdin.readline
 
 N = int(input())
 M = int(input())
-S = list(input().strip())
-# 2 + 1, 3 + 2, 
-munja = []
-for i in range(2*N+1) :
-    if i % 2 == 0 :
-        munja.append('I')
-    else :
-        munja.append('O')
-cnt = 0
-for j in range(M):
-    if S[j] == 'I':
-        if S[j:j+2*N+1] == munja :
-            cnt += 1
+S = input().strip()
 
-print(cnt) 
+i = 0
+count = 0
+result = 0
+
+while i < M - 1:
+    if S[i] == 'I':
+        temp = 0
+        while i+1 < M and S[i+1] == 'O' and i+2 < M and S[i+2] == 'I':
+            temp += 1
+            i += 2
+            if temp == N:
+                result += 1
+                temp -= 1  # 겹치는 패턴을 위해 하나 빼줌
+        else:
+            i += 1
+    else:
+        i += 1
+
+print(result)
