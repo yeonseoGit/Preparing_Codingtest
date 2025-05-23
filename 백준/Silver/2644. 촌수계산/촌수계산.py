@@ -12,20 +12,13 @@ for _ in range(m):
     family[x].append(y)
     family[y].append(x)
 
-answer = 0
 visit = [-1] * (n + 1)
 
-def bfs(x, y):
-    q = deque()
-    q.append(x)
-    visit[x] = 0
+def dfs(x, count):
+    visit[x] = count
+    for i in family[x]:
+        if visit[i] == -1:
+            dfs(i, count + 1)
 
-    while q:
-        c_x = q.popleft()
-        for i in family[c_x]:
-            if visit[i] == -1:
-                visit[i] = visit[c_x] + 1
-                q.append(i)
-    return visit[y]
-
-print(bfs(f_1, f_2))
+dfs(f_1, 0)
+print(visit[f_2])
